@@ -1,0 +1,17 @@
+version: '3.5'
+services:
+    web:
+        container_name: address-api
+        build:
+            context: .
+            target: web
+        command: php artisan serve --host=0.0.0.0 --port=80
+        volumes:
+            - .:/var/www/html/address
+        tty: true
+        networks:
+            main:
+                aliases:
+                    - web
+networks:
+    main:
