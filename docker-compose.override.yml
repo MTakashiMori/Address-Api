@@ -4,13 +4,3 @@ services:
     ports:
         - "8000:80"
     working_dir: /var/www/html/address-api
-  db:
-    ports:
-        - "3306:3306"
-    volumes:
-        - /var/www/html/address:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: 05051789
-      MYSQL_DATABASE: address-db
-      MYSQL_USER: takashi
-      MYSQL_PASSWORD: 06041944
