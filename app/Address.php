@@ -8,7 +8,13 @@ use Illuminate\Database\Eloquent\Scope;
 
 class Address extends Model implements Scope
 {
-    //
+    protected $fillable = [
+        'country',
+        'state',
+        'city',
+        'street',
+        'house'
+    ];
 
     public function people()
     {

@@ -16,18 +16,12 @@ class Controller extends BaseController
 
     protected function index(Request $request)
     {
-        dd($request->all());
-        return $this->service->all();
+        return $this->service->all($request->all());
     }
 
     protected function show(Request $request)
     {
         return $this->service->all([$request->all()]);
-    }
-
-    protected function save(Request $request)
-    {
-        return $this->service->save($request);
     }
 
     protected function delete()

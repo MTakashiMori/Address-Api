@@ -6,21 +6,17 @@ class Service
 {
     protected $model;
 
-    public function __construct()
-    {
-        
-    }
-
     public function all($filter = null)
     {
         if($filter){
-            return $this->model->where($filter)->get();
+            return $this->model->where($filter)->paginate();
         }
-        return $this->model->all();
+        return $this->model->paginate();
     }
 
     public function save($data)
     {
-        $this->model->fill($data)->updateOrCreate();
+        //dd($data);
+        return $this->model->updateOrCreate($data);
     }
 }
