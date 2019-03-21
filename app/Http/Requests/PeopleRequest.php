@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class PeopleRequest extends FormRequest
+class PeopleRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +11,7 @@ class PeopleRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +22,25 @@ class PeopleRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'telephone' => 'required|digits:8,9'
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'Nome',
+            'telephone' => 'Telefone'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+          'required.name' => 'O campo Nome e obrigatório.',
+          'required.telephone' => 'O campo Telefone é obrigatório.',
+          'digits.telephone' => 'O campo telefone não é válido, verifique.'
         ];
     }
 }

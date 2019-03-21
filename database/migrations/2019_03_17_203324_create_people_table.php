@@ -18,11 +18,9 @@ class CreatePeopleTable extends Migration
             $table->string('name');
             $table->string('telephone');
 
-            $table->unsignedInteger('address_id');
+            $table->unsignedInteger('address_id')->nullable();
 
             $table->foreign('address_id')->references('id')->on('addresses');
-
-            $table->timestamps();
         });
     }
 

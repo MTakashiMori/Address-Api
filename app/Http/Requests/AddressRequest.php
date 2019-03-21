@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class AddressRequest extends FormRequest
+class AddressRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +11,7 @@ class AddressRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +22,34 @@ class AddressRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'country' => 'required',
+            'state'   => 'required',
+            'city'    => 'required',
+            'street'  => 'required',
+            'house'   => 'required'
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'country' => 'País',
+            'state'   => 'Estado',
+            'city'    => 'Cidade',
+            'street'  => 'Rua',
+            'house'   => 'Casa'
+        ];
+    }
+
+    public function messages()
+    {
+
+        return [
+            'required.country' => 'O campo País é obrigatório.',
+            'required.state' => 'O campo Estado é obrigatório.',
+            'required.city' => 'O campo Cidade é obrigatório.',
+            'required.street' => 'O campo Rua é obrigatório.',
+            'required.house' => 'O campo Casa é obrigatório.',
         ];
     }
 }
