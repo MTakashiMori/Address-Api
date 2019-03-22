@@ -8,6 +8,6 @@ class PeopleService extends Service
 {
     public function __construct(People $model)
     {
-        $this->model = $model;
+        $this->model = $model->with('address');
     }
 }

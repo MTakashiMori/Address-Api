@@ -8,8 +8,6 @@ class CreatePeopleTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -21,13 +19,13 @@ class CreatePeopleTable extends Migration
             $table->unsignedInteger('address_id')->nullable();
 
             $table->foreign('address_id')->references('id')->on('addresses');
+
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

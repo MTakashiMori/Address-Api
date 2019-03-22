@@ -8,7 +8,8 @@ class People extends Model
 {
     protected $fillable = [
         'name',
-        'telephone'
+        'telephone',
+        'address_id',
     ];
 
     public function address()

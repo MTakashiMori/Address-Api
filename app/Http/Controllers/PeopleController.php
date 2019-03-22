@@ -13,14 +13,17 @@ class PeopleController extends Controller
         $this->service = $service;
     }
 
-    public function store(PeopleRequest $request){
+    public function store(PeopleRequest $request)
+    {
         $this->service->save($request->all());
+
         return response()->json(['message' => __('message.created')], 201);
     }
 
-    public function update($id, PeopleRequest $request)
+    public function update($id, Request $request)
     {
         $this->service->update($request->all(), $id);
+
         return response()->json(['message' => __('message.updated')], 201);
     }
 }

@@ -8,8 +8,6 @@ class CreateAddressesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -20,13 +18,13 @@ class CreateAddressesTable extends Migration
             $table->string('city');
             $table->string('street');
             $table->string('house');
+
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {
