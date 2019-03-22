@@ -34,13 +34,4 @@ class PeopleRequest extends Request
             'telephone' => 'Telefone'
         ];
     }
-
-    public function messages()
-    {
-        return [
-          'required.name' => 'O campo Nome e obrigatório.',
-          'required.telephone' => 'O campo Telefone é obrigatório.',
-          'digits.telephone' => 'O campo telefone não é válido, verifique.'
-        ];
-    }
 }

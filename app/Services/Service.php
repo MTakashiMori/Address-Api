@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\DB;
+
 class Service
 {
     protected $model;
@@ -16,7 +18,26 @@ class Service
 
     public function save($data)
     {
-        //dd($data);
-        return $this->model->updateOrCreate($data);
+        DB::transaction(function () use ($data){
+            $this->model->fill($data)->save();
+        });
+        return;
+    }
+
+    public function update($data, $id)
+    {
+        DB::transaction(function () use ($data, $id){
+            $model = $this->model->find($id);
+            $model->fill($data)->save();
+        });
+        return;
+    }
+
+    public function delete($id)
+    {
+        DB::transaction( function () use ($id){
+            $this->model->find($id)->delete();
+        });
+        return;
     }
 }
