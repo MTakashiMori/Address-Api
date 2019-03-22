@@ -16,18 +16,27 @@ class Controller extends BaseController
 
     protected function index(Request $request)
     {
-        return $this->service->all($request->all());
+        return response()->json([
+            'message' => __('messages.list'),
+            'data' => $this->service->all($request->all()
+            )],
+            200);
     }
 
     protected function show(Request $request)
     {
-        return $this->service->all([$request->all()]);
+        return response()->json([
+            'message' => __('messages.list'),
+            'data' => $this->service->all($request->all()
+            )],
+            200);
     }
 
-    protected function delete()
+    protected function destroy($id)
     {
-        
+        $this->service->delete($id);
+        return response()->json([
+            'message' => __('messages.deleted')
+        ], 204);
     }
-
-    protected function update(){}
 }
